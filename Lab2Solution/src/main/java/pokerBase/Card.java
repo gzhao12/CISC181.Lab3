@@ -5,7 +5,6 @@ import java.util.Comparator;
 import pokerEnums.eRank;
 import pokerEnums.eSuit;
 
-@SuppressWarnings("rawtypes")
 public class Card implements Comparable {
 
 	private eSuit eSuit;

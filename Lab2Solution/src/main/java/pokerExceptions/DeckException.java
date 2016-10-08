@@ -2,7 +2,6 @@ package pokerExceptions;
 
 import pokerBase.Deck;
 
-@SuppressWarnings("serial")
 public class DeckException extends Exception {
 	private Deck d;
 	

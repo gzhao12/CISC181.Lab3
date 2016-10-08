@@ -41,7 +41,7 @@ public class Deck {
 		}
 	}
 
-	public Card Draw() throws Exception{
+	public Card Draw() throws DeckException{
 		if (deckCards.size() == 0) 
 			throw new DeckException(this);
 		return deckCards.remove(0);
@@ -49,5 +49,9 @@ public class Deck {
 
 	public ArrayList<Card> getDeckCards() {
 		return deckCards;
+	}
+	
+	public int DeckSize() {
+		return deckCards.size();
 	}
 }

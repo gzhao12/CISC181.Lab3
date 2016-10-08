@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import pokerExceptions.DeckException;
+
 public class Deck_Test {
 
 	@BeforeClass
@@ -27,11 +29,15 @@ public class Deck_Test {
 	}
 
 	@Test
-	public void DeckBuildTest()
-	{
-		fail("Implement Me");
+	public void BuildDeckTest() {
+		Deck d = new Deck();
+		assertTrue(d.DeckSize() == 52);
 	}
-	
 
-
+	@Test
+	public void DeckDrawTest() throws DeckException {
+		Deck d = new Deck();
+		d.Draw();
+		assertTrue(d.DeckSize() == 51);
+	}
 }
