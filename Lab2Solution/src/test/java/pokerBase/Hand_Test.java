@@ -90,7 +90,6 @@ public class Hand_Test {
 		assertTrue(BestHand.getHs().getHandStrength() == eHandStrength.RoyalFlush.getHandStrength());
 		assertTrue(BestHand.getHs().getHiHand() == eRank.ACE.getiRankNbr());
 	}
-
 	
 	@Test
 	public void TestRoyalFlush() {
