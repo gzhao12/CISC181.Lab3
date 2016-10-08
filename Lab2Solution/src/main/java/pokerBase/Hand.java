@@ -10,6 +10,8 @@ import pokerEnums.eHandStrength;
 import pokerEnums.eRank;
 import pokerEnums.eSuit;
 
+import pokerExceptions.HandException;
+
 public class Hand {
 
 	private ArrayList<Card> CardsInHand = new ArrayList<Card>();
@@ -53,15 +55,15 @@ public class Hand {
 	 */
 	static Hand EvaluateHand(Hand h) throws Exception {
 
-		// Sort the colleciton (by hand rank)
+		// Sort the collection (by hand rank)
 		Collections.sort(h.getCardsInHand());
 
 		// TODO - Lab 3 Here's the code to throw the HandException
 		// TODO - Implement HandException
-		/*
-		 * if (h.getCardsInHand().size() != 5) { throw new
-		 * HandException(h,eHandExceptionType.ShortHand); }
-		 */
+
+		if (h.getCardsInHand().size() != 5) {
+			throw new HandException(h);
+		}
 
 		ArrayList<Hand> ExplodedHands = new ArrayList<Hand>();
 		ExplodedHands.add(h);
@@ -159,6 +161,21 @@ public class Hand {
 		}
 
 		return isRoyalFlush;
+	}
+
+	public static boolean isHandFiveOfAKind(Hand h, HandScore hs) {
+		boolean bHandCheck = false;
+		if (h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank() == h.getCardsInHand()
+				.get(eCardNo.FifthCard.getCardNo()).geteRank()
+				&& h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() == eRank.JOKER) {
+			bHandCheck = true;
+			hs.setHandStrength(eHandStrength.FiveOfAKind.getHandStrength());
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank().getiRankNbr());
+			hs.setLoHand(0);
+			ArrayList<Card> kickers = new ArrayList<Card>();
+			hs.setKickers(kickers);
+		}
+		return bHandCheck;
 	}
 
 	/**
